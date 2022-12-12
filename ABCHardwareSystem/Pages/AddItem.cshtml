@@ -1,0 +1,40 @@
+﻿@page
+@model ABCHardwareSystem.Pages.AddItemModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Add Item";
+}
+<div>
+    <h1>Add Item</h1>
+    <form method="post" name="AddItemForm" onsubmit="return ValidateItem(window.document.AddItemForm);">
+        <table>
+            <tr>
+                <td>Item Code:</td>
+                <td>
+                    <input asp-for="ItemCodeField" name="ItemCodeField" />
+                    @Html.ValidationMessage("ItemCodeField")
+                </td>
+            </tr>
+            <tr>
+                <td>Item Description:</td>
+                <td>
+                    <input asp-for="ItemDescriptionField" name="ItemDescriptionField" />
+                    @Html.ValidationMessage("ItemDescriptionField")
+                </td>
+            </tr>
+            <tr>
+                <td>Unit Price:</td>
+                <td>
+                    <input asp-for="UnitPriceField" name="UnitPriceField" type="number" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="Submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br/>
+    @Model.Message
+</div>

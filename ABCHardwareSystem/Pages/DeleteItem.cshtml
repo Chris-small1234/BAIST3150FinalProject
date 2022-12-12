@@ -1,0 +1,60 @@
+﻿@page
+@model ABCHardwareSystem.Pages.DeleteItemModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Delete Item";
+}
+<div>
+    <h1>Delete Item</h1>
+    <form method="post" name="DeleteItemForm">
+        <table>
+            <tr>
+                <td>
+                    Select Item:
+                    <input type="text" name="ItemListEntry" list="ItemList" />
+                    <datalist id="ItemList">
+                        @foreach (var item in Model.Items)
+                        {
+                            <option value="@item.ItemCode">@item.ItemDescription</option>
+                        }
+                    </datalist>
+                    @Html.ValidationMessage("ItemListEntry")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="Submit" value="Find">Find</button>
+                </td>
+            </tr>
+            <tr><td><br /></td></tr>
+            @if (Model.Confirmation)
+            {
+                <tr>
+                    <td>Item Code:</td>
+                    <td>
+                        <input asp-for="ItemCodeField" name="ItemCodeField" value="@Model.ExistingItem.ItemCode" readonly="readonly" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Item Description:</td>
+                    <td>
+                        <input asp-for="ItemDescriptionField" name="ItemDescriptionField" value="@Model.ExistingItem.ItemDescription" readonly="readonly" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Unit Price:</td>
+                    <td>
+                        <input asp-for="UnitPriceField" name="UnitPriceField" value="@Model.ExistingItem.UnitPrice" readonly="readonly" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" name="Submit" value="Delete">Delete</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </form>
+    <br />
+    @Model.Message
+</div>

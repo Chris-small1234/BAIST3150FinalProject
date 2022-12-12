@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/Layout.css" />
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+
+    <script type="text/javascript">
+        function ValidateItem(aForm) {
+            if (!aForm.ItemCodeField.value || aForm.ItemCodeField.value.length > 10) {
+                alert("Item Code is not valid");
+                return false;
+            }
+            if (aForm.ItemDescriptionField.value.length > 100) {
+                alert("Item Description is too long");
+                return false;
+            }
+            aForm.Submit();
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a asp-page="/Index" class="home">Home</a></li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Items
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a asp-page="/AddItem">Add Item</a>
+                        <a asp-page="/UpdateItem">Update Item</a>
+                        <a asp-page="/DeleteItem">Delete Item</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        Customers
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <a asp-page="/AddCustomer">Add Customer</a>
+                        <a asp-page="/UpdateCustomer">Update Customer</a>
+                        <a asp-page="/DeleteCustomer">Delete Customer</a>
+                    </div>
+                </div>
+            </li>
+            <li><a asp-page="/" class="home">Process Sale</a></li>
+        </ul>
+    </nav>
+    <main>
+        @RenderBody()
+    </main>
+    <footer>
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">About Us</a>
+        <a asp-page="/Index">ABC Hardware</a>
+        <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0">Careers</a>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿@page
+@model ABCHardwareSystem.Pages.UpdateCustomerModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Update Customer";
+}
+<div>
+    <h1>Update Customer</h1>
+    <form method="post" name="UpdateCustomerForm">
+        <table>
+            <tr>
+                <td>
+                    Select Customer:
+                    <input type="text" name="CustomerListEntry" list="ItemList" />
+                    <datalist id="ItemList">
+                        @foreach (var customer in Model.Customers)
+                        {
+                            <option value="@customer.CustomerNumber">@customer.CustomerFirstName @customer.CustomerLastName</option>
+                        }
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="Submit" value="Find">Find</button>
+                </td>
+            </tr>
+            <tr><td><br /></td></tr>
+            @if (Model.Confirmation)
+            {
+                <tr>
+                    <td>Customer Number:</td>
+                    <td>
+                        <input asp-for="CustomerNumberField" name="CustomerNumberField" readonly="readonly" value="@Model.ExistingCustomer.CustomerNumber" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>First Name:</td>
+                    <td>
+                        <input asp-for="CustomerFirstNameField" name="CustomerFirstNameField" value="@Model.ExistingCustomer.CustomerFirstName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td>
+                        <input asp-for="CustomerLastNameField" name="CustomerLastNameField" value="@Model.ExistingCustomer.CustomerLastName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        <input asp-for="CustomerAddressField" name="CustomerAddressField" value="@Model.ExistingCustomer.CustomerAddress" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>City:</td>
+                    <td>
+                        <input asp-for="CityField" name="CityField" value="@Model.ExistingCustomer.City" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Province:</td>
+                    <td>
+                        <input asp-for="ProvinceField" name="ProvinceField" value="@Model.ExistingCustomer.Province" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Postal Code:</td>
+                    <td>
+                        <input asp-for="PostalCodeField" name="PostalCodeField" value="@Model.ExistingCustomer.PostalCode" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" name="Submit" value="Update">Update</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </form>
+    <br />
+    @Model.Message
+</div>

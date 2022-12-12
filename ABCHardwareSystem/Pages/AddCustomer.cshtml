@@ -1,0 +1,69 @@
+﻿@page
+@model ABCHardwareSystem.Pages.AddCustomerModel
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Add Customer";
+}
+<div>
+    <h1>Add Customer</h1>
+    <form method="post" name="AddCustomerForm">
+        <table>
+            <tr>
+                <td>Customer Number:</td>
+                <td>
+                    <input asp-for="CustomerNumberField" name="CustomerNumberField" />
+                    @Html.ValidationMessage("CustomerNumberField")
+                </td>
+            </tr>
+            <tr>
+                <td>First Name:</td>
+                <td>
+                    <input asp-for="CustomerFirstNameField" name="CustomerFirstNameField" />
+                    @Html.ValidationMessage("CustomerFirstNameField")
+                </td>
+            </tr>
+            <tr>
+                <td>Last Name:</td>
+                <td>
+                    <input asp-for="CustomerLastNameField" name="CustomerLastNameField" />
+                    @Html.ValidationMessage("CustomerLastNameField")
+                </td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td>
+                    <input asp-for="CustomerAddressField" name="CustomerAddressField" />
+                    @Html.ValidationMessage("CustomerAddressField")
+                </td>
+            </tr>
+            <tr>
+                <td>City:</td>
+                <td>
+                    <input asp-for="CityField" name="CityField" />
+                    @Html.ValidationMessage("CityField")
+                </td>
+            </tr>
+            <tr>
+                <td>Province:</td>
+                <td>
+                    <input asp-for="ProvinceField" name="ProvinceField" />
+                    @Html.ValidationMessage("ProvinceField")
+                </td>
+            </tr>
+            <tr>
+                <td>Postal Code:</td>
+                <td>
+                    <input asp-for="PostalCodeField" name="PostalCodeField" />
+                    @Html.ValidationMessage("PostalCodeField")
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button type="submit" name="Submit">Submit</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br />
+    @Model.Message
+</div>
